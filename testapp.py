@@ -3,6 +3,8 @@
 import streamlit as st
 import os
 
+n = 0
+
 st.set_page_config(layout="wide")
 st.title("title")
 
@@ -25,15 +27,21 @@ command = cmd_file
 
 os.system(command)
 
+if st.button("left"):
+    if n > 0: n -= 1
+
+if st.button("right"):
+    n += 1
 
 #画像表示
-num=3
+num=2
 col=[]
-col= st.columns(3)
+col= st.columns(num)
 
 for i in list(range(0,num,1)):
     with col[i]:
-        st.image("sheet/file-page"+str(i+1)+".png", use_column_width=True)
+        st.image("sheet/file-page"+str(i+n+1)+".png", use_column_width=True)
+
 
 
 

@@ -2,7 +2,7 @@
 
 echo ".cmd Executed"
 
-py -3.7-32 ".\Lilypond\usr\bin\musicxml2ly.py" --output=sheet/file sheet/file.xml
+py -3.7-32 ".\Lilypond\usr\bin\musicxml2ly.py" --output=sheet/file
 
 ".\LilyPond\usr\bin\lilypond.exe" --output=sheet --png "sheet/file.ly"
 
