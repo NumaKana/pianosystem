@@ -2,14 +2,16 @@ import streamlit as st
 import os
 
 num=2
+st.set_page_config(layout="wide")
 uploaded_files = st.sidebar.file_uploader("upload .mxl file")
 col= st.columns(num)
+file = ""
 n=0
 
 def makesvg(file): #できない！！
     #make_svg.cmdからコマンドを実行する
     cmd_file = "make_svg.cmd"   # .cmdファイルへのパス
-    command = cmd_file + file
+    command = cmd_file  + file
     #command += " " + "sheet/file.xml" #ここをupload_fileにしたい
     os.system(command)
     
@@ -21,8 +23,9 @@ def show():
 
 def main():
     global n
-    st.set_page_config(layout="wide")
-    if st.sidebar.button("show"): show()
+    if st.sidebar.button("show"):
+        makesvg(file)
+        show()
 
     if st.button("left"): 
         if n > 0: n -= 1
@@ -30,6 +33,8 @@ def main():
     if st.button("right"): 
         if n < num: n += 1
         show()
+
+    
         
     
 
