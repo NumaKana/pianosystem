@@ -33,7 +33,6 @@ PartPOneVoiceOne =  \relative c'' {
     g'4 -. | % 3
     \stemDown f8 [ \stemDown e8 \stemDown d8 \stemDown c8 ] \stemDown b8
     [ \stemDown c8 \stemDown b8 \stemDown c8 ] | % 4
-    \override NoteHead.color = #(x11-color "LimeGreen")
     \stemDown d8 [ \stemDown c8 \stemDown b8 \stemDown a8 ] \stemUp g8 ~
     [ \stemUp <f, g'>8 \clef "bass" \stemUp e8 \stemUp d8 ] | % 5
     \clef "treble" \stemDown c''4 \stemDown e8 [ \stemDown c8 ] \stemUp
