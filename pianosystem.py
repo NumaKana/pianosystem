@@ -1,5 +1,6 @@
 import streamlit as st
 import os
+import re
 
 st.set_page_config(
     page_title="ピアノ練習システム",
@@ -22,7 +23,8 @@ page_back = col_page[0].button("＜")
 page_next = col_page[1].button("＞")
 
 def init():
-    if st.button("makesvg"):
+    if st.button("reset"):
+        st.session_state.n = 0
         st.session_state.m = 0
         makesvg("sheet/file.mxl")
         addcolor(st.session_state.m)
@@ -53,16 +55,31 @@ def addcolor(m):
         data = f.readlines()
 
     i = 0
-    for d in data:
-        if d.endswith("% "+str(m+1)+"\n"):
+    back = 0
+    repeat = []
+    while(i < len(data)):
+        if "\\repeat volta" in data[i]:
+            repeat.append(i)     
+
+        if re.match(".*(%\s|#)"+str(int(m)+1)+"\\n", data[i]):
             data.insert(i+1, '\override NoteHead.color = #(x11-color "red")\n')
             data.insert(i+1, '\override Stem.color = #red\n')
             data.insert(i+1, '\override Beam.color = #red\n')
-        if d.endswith("% "+str(m+5)+"\n"):
+            j=0
+            while(not re.match(".*(%\s|#)"+str(int(m)+5)+"\\n", data[i])):
+                if data[i].endswith("}\n"):
+                    if repeat:
+                        if j < 4: back = 4 - j
+                        break
+                if re.match(".*%\s\d+\\n", data[i]):    
+                    j+=1
+                i+=1
             data.insert(i+1, '\override NoteHead.color = #(x11-color "black")\n')
             data.insert(i+1, '\override Stem.color = #black\n')
             data.insert(i+1, '\override Beam.color = #black\n')
         i+=1
+
+    st.session_state.m -= back
         
     
 
@@ -92,7 +109,7 @@ def main():
         color_back = col_color[0].button("back")
         color_next = col_color[1].button("next")
         if color_next:
-            if st.session_state.m < 38: st.session_state.m +=4
+            st.session_state.m +=4
             addcolor(st.session_state.m)
             show(st.session_state.filename, st.session_state.n)
         if color_back:
