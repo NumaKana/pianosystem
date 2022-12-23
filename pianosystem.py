@@ -24,6 +24,8 @@ page_back = col_page[0].button("＜")
 page_next = col_page[1].button("＞")
 
 def init():
+    os.system("chmod +x 'cmd/musicxml2ly.cmd'")
+    os.system("chmod +x 'cmd/lilypond.cmd'")
     if uploaded_files:
         makesvg(file)
         addcolor()
@@ -42,8 +44,8 @@ def makesvg(file): #できない！！
     cmd_musicxml2ly = "'cmd/musicxml2ly.cmd'"   # .cmdファイルへのパス
     command = cmd_musicxml2ly  + " " + file
     #command += " " + "sheet/file.xml" #ここをupload_fileにしたい
-    os.system("sudo " + command)
-    os.system("sudo 'cmd/lilypond.cmd' sheet/file.ly")
+    os.system(command)
+    os.system("'cmd/lilypond.cmd' sheet/file.ly")
     
 def addcolor(m):
     file_name = "sheet/file.ly"
@@ -90,7 +92,7 @@ def addcolor(m):
     with open("sheet/alt_file.ly", mode='w', encoding="utf-8") as f:
         f.writelines(data)
 
-    os.system("sudo 'cmd/lilypond.cmd' sheet/alt_file.ly")
+    os.system("'cmd/lilypond.cmd' sheet/alt_file.ly")
 
 def getphrase(m):
     file_name = "sheet/file.ly"
@@ -131,7 +133,7 @@ def getphrase(m):
     with open("sheet/phrase_file.ly", mode='w', encoding="utf-8") as f:
         f.writelines(data)
 
-    os.system("sudo 'cmd/lilypond.cmd' sheet/phrase_file.ly")
+    os.system("'cmd/lilypond.cmd' sheet/phrase_file.ly")
 
 
 def show(filename, n):
@@ -149,6 +151,7 @@ def main():
         makesvg("sheet/file.mxl")
         addcolor(st.session_state.m)
         getphrase(st.session_state.m)
+
     if st.button("getphrase"):
         st.session_state.n = 0
         st.session_state.m = 0
