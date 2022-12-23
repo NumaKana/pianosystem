@@ -28,12 +28,11 @@
         }
     }
 PartPOneVoiceOne =  \relative c'' {
-\override NoteHead.color = #(x11-color "LightSteelBlue")
     \repeat volta 2 {
         \repeat volta 2 {
             \clef "treble" \numericTimeSignature\time 4/4 \key c \major
             | % 1
-            \stemDown\override NoteHead.color = #(x11-color "black")  c4 ( \stemDown e8 [ \stemDown c8 ] \stemUp g4 )  \override NoteHead.color = #(x11-color "LightSteelBlue") -.
+            \stemDown c4 ( \stemDown e8 [ \stemDown c8 ] \stemUp g4 ) -.
             \stemUp g4 -. | % 2
             \stemDown c4 ( \stemDown e8 [ \stemDown c8 ] \stemUp g4 ) -.
             \stemDown g'4 -. | % 3
@@ -111,10 +110,6 @@ PartPOneVoiceFive =  \relative c {
     \repeat volta 2 {
         \repeat volta 2 {
             \clef "bass" \numericTimeSignature\time 4/4 \key c \major | % 1
-\override Accidental.color = #(x11-color "LightSteelBlue")
-\override Beam.color = #(x11-color "LightSteelBlue")
-\override Stem.color = #(x11-color "LightSteelBlue")
-\override NoteHead.color = #(x11-color "LightSteelBlue")
             \stemUp c4 r4 r2 | % 2
             \stemUp c4 r4 r2 | % 3
             \stemUp c4 r4 \stemUp c4 r4 | % 4

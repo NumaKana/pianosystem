@@ -2,6 +2,9 @@
 作業ディレクトリを変更します: `sheet'
 `sheet/phrase_file.ly' を処理しています
 構文解析中...
+C:/Users/kr814/workspace/pianosystem-1/sheet/phrase_file.ly:36:177: 警告: 添付されていない ArticulationEvent
+            \stemDown\override NoteHead.color = #(x11-color "black")  c4 ( \stemDown e8 [ \stemDown c8 ] \stemUp g4 )  \override NoteHead.color = #(x11-color "LightSteelBlue") 
+                                                                                                                                                                                -.
 楽曲を解釈中...[8][16][24][32]
 グラフィカルオブジェクトの前処理中...
 理想的なページ数を見つけています...
