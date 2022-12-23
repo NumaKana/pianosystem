@@ -39,11 +39,11 @@ def init():
 
 def makesvg(file): #できない！！
     #make_svg.cmdからコマンドを実行する
-    cmd_musicxml2ly = "'cmd\musicxml2ly.cmd'"   # .cmdファイルへのパス
+    cmd_musicxml2ly = "'cmd/musicxml2ly.cmd'"   # .cmdファイルへのパス
     command = cmd_musicxml2ly  + " " + file
     #command += " " + "sheet/file.xml" #ここをupload_fileにしたい
     os.system(command)
-    os.system("'cmd\lilypond.cmd' sheet/file.ly")
+    os.system("'cmd/lilypond.cmd' sheet/file.ly")
     
 def addcolor(m):
     file_name = "sheet/file.ly"
@@ -90,7 +90,7 @@ def addcolor(m):
     with open("sheet/alt_file.ly", mode='w', encoding="utf-8") as f:
         f.writelines(data)
 
-    os.system("cmd\lilypond.cmd sheet/alt_file.ly")
+    os.system("'cmd/lilypond.cmd' sheet/alt_file.ly")
 
 def getphrase(m):
     file_name = "sheet/file.ly"
@@ -131,7 +131,7 @@ def getphrase(m):
     with open("sheet/phrase_file.ly", mode='w', encoding="utf-8") as f:
         f.writelines(data)
 
-    os.system("cmd\lilypond.cmd sheet/phrase_file.ly")
+    os.system("'cmd/lilypond.cmd' sheet/phrase_file.ly")
 
 
 def show(filename, n):
