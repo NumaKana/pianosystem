@@ -24,9 +24,8 @@ page_back = col_page[0].button("＜")
 page_next = col_page[1].button("＞")
 
 def init():
-    os.system("chmod +x 'cmd/musicxml2ly.cmd'")
-    os.system("chmod +x 'cmd/lilypond.cmd'")
-    os.system("chmod +x './LilyPond'")
+    os.system("chmod -R a+x './cmd'")
+    os.system("chmod -R a+x './LilyPond'")
     if uploaded_files:
         makesvg(file)
         addcolor()
