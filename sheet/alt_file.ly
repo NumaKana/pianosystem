@@ -36,10 +36,6 @@ PartPOneVoiceOne =  \relative c'' {
 \override Stem.color = #(x11-color "LightSteelBlue")
 \override NoteHead.color = #(x11-color "LightSteelBlue")
             | % 1
-\override Accidental.color = #black
-\override Beam.color = #black
-\override Stem.color = #black
-\override NoteHead.color = #(x11-color "black")
             \stemDown c4 ( \stemDown e8 [ \stemDown c8 ] \stemUp g4 ) -.
             \stemUp g4 -. | % 2
             \stemDown c4 ( \stemDown e8 [ \stemDown c8 ] \stemUp g4 ) -.
@@ -48,10 +44,6 @@ PartPOneVoiceOne =  \relative c'' {
             \stemDown b8 [ \stemDown c8 \stemDown b8 \stemDown c8 ] | % 4
             \stemDown d8 [ \stemDown c8 \stemDown b8 \stemDown a8 ]
             \stemUp g4 ) r4 \break | % 5
-\override Accidental.color = #(x11-color "LightSteelBlue")
-\override Beam.color = #(x11-color "LightSteelBlue")
-\override Stem.color = #(x11-color "LightSteelBlue")
-\override NoteHead.color = #(x11-color "LightSteelBlue")
             \stemDown c4 ( \stemDown e8 [ \stemDown c8 ] \stemUp g4 ) -.
             \stemUp g4 -. | % 6
             \stemDown e'4 ( \stemDown g8 [ \stemDown e8 ] \stemDown c4 )
@@ -82,6 +74,10 @@ PartPOneVoiceOne =  \relative c'' {
         \stemDown f4 \stemDown d4 \stemDown es4 \stemDown c4 | % 19
         \stemDown b8 [ \stemDown c8 \stemDown d8 \stemDown b8 ] \stemUp
         g4 ) -. \stemUp g4 -. \break | \barNumberCheck #20
+\override Accidental.color = #black
+\override Beam.color = #black
+\override Stem.color = #black
+\override NoteHead.color = #(x11-color "black")
         \stemDown g'8 ( [ \stemDown g,8 \stemDown g'8 \stemDown g,8 ]
         \stemDown g'8 [ \stemDown g,8 \stemDown g'8 \stemDown g,8 ] | % 21
         \stemDown g'8 [ \stemDown g,8 \stemDown g'8 \stemDown g,8 ]
@@ -89,6 +85,10 @@ PartPOneVoiceOne =  \relative c'' {
         \stemDown d'8 [ \stemDown es8 \stemDown f8 \stemDown d8 ]
         \stemDown f8 [ \stemDown es8 \stemDown d8 \stemDown c8 ] | % 23
         \stemDown <b g'>4 ) r4 r2 \pageBreak | % 24
+\override Accidental.color = #(x11-color "LightSteelBlue")
+\override Beam.color = #(x11-color "LightSteelBlue")
+\override Stem.color = #(x11-color "LightSteelBlue")
+\override NoteHead.color = #(x11-color "LightSteelBlue")
         \stemUp c,4 ( \stemUp e8 [ \stemUp c8 ] \stemUp g4 ) -. \stemUp
         g4 -. | % 25
         \stemUp c4 ( -. \stemUp e8 -. [ \stemUp c8 -. ] \stemUp g4 )
@@ -122,10 +122,6 @@ PartPOneVoiceFive =  \relative c {
     \repeat volta 2 {
         \repeat volta 2 {
             \clef "bass" \numericTimeSignature\time 4/4 \key c \major | % 1
-\override Accidental.color = #black
-\override Beam.color = #black
-\override Stem.color = #black
-\override NoteHead.color = #(x11-color "black")
 \override Accidental.color = #(x11-color "LightSteelBlue")
 \override Beam.color = #(x11-color "LightSteelBlue")
 \override Stem.color = #(x11-color "LightSteelBlue")
@@ -135,10 +131,6 @@ PartPOneVoiceFive =  \relative c {
             \stemUp c4 r4 \stemUp c4 r4 | % 4
             \stemUp g4 r4 \stemDown g'8 ( [ \stemDown f8 \stemDown e8
             \stemDown d8 ] \break | % 5
-\override Accidental.color = #(x11-color "LightSteelBlue")
-\override Beam.color = #(x11-color "LightSteelBlue")
-\override Stem.color = #(x11-color "LightSteelBlue")
-\override NoteHead.color = #(x11-color "LightSteelBlue")
             \stemUp c4 ) r4 r2 | % 6
             \stemDown c'4 r4 r4 \stemDown fis,4 | % 7
             \stemDown g4 \stemUp c,4 \stemDown d4 \stemUp d,4 | % 8
@@ -159,11 +151,19 @@ PartPOneVoiceFive =  \relative c {
         es1 ) | % 18
         \stemDown b2 \stemDown c2 | % 19
         \stemDown g2 r2 \break | \barNumberCheck #20
+\override Accidental.color = #black
+\override Beam.color = #black
+\override Stem.color = #black
+\override NoteHead.color = #(x11-color "black")
         \stemDown f'4 ( \stemDown g,4 \stemDown d'4 \stemDown g,4 | % 21
         \stemDown es'4 \stemDown g,4 \stemDown c4 \stemDown g4 | % 22
         \stemDown b4 ) r4 \stemDown c4 r4 | % 23
         \stemDown g4 \stemUp g,4 \stemDown g'8 ( [ \stemDown f8
         \stemDown e8 \stemDown d8 ] \pageBreak | % 24
+\override Accidental.color = #(x11-color "LightSteelBlue")
+\override Beam.color = #(x11-color "LightSteelBlue")
+\override Stem.color = #(x11-color "LightSteelBlue")
+\override NoteHead.color = #(x11-color "LightSteelBlue")
         \stemUp c4 ) r4 r2 | % 25
         \stemUp c4 r4 r2 | % 26
         \stemUp c4 r4 \stemUp c4 r4 | % 27

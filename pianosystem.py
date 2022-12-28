@@ -8,6 +8,25 @@ st.set_page_config(
     initial_sidebar_state="expanded"
 )
 
+css = f"""
+<style>
+  div.main {{
+    box-sizing: border-box;
+    height : 100vh;
+  }}
+
+  div.block-container {{
+    box-sizing: border-box;
+    height : calc(100vh - 40px);
+  }}
+
+  div.stVerticalBlock {{
+    gap : 0;
+  }}
+</style>
+"""
+st.markdown(css, unsafe_allow_html=True)
+
 num=2
 col_img= st.columns(num)
 file = "sheet/file.mxl"
@@ -141,7 +160,7 @@ def show(filename, n):
 
 def main():
     init()
-    if st.button("reset"):
+    if st.sidebar.button("reset"):
         st.session_state.n = 0
         st.session_state.m = 0
         st.session_state.l = 0
@@ -149,7 +168,7 @@ def main():
         makesvg("sheet/file.mxl")
         addcolor(st.session_state.m)
         getphrase(st.session_state.m)
-    if st.button("getphrase"):
+    if st.sidebar.button("getphrase"):
         st.session_state.n = 0
         st.session_state.m = 0
         st.session_state.l = 0
