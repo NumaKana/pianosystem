@@ -40,8 +40,8 @@ def init():
     
 
 def makesvg(file): #できない！！
-    #make_svg.cmdからコマンドを実行する
-    cmd_musicxml2ly = "'cmd/musicxml2ly.cmd'"   # .cmdファイルへのパス
+    #make_svg.shからコマンドを実行する
+    cmd_musicxml2ly = "'cmd/musicxml2ly.sh'"   # .shファイルへのパス
     command = cmd_musicxml2ly  + " " + file
     #command += " " + "sheet/file.xml" #ここをupload_fileにしたい
     os.system(command)
