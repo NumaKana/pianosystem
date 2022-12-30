@@ -1,4 +1,5 @@
 #!/bin/bash
+
 @echo off
 
 echo "musicxml2ly Executed"
