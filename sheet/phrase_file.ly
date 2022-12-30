@@ -33,14 +33,14 @@ PartPOneVoiceOne =  \relative c'' {
         \repeat volta 2 {
             \clef "treble" \numericTimeSignature\time 4/4 \key c \major
             | % 1
-            \stemDown c4 ( \stemDown e8 [ \stemDown c8 ] \stemUp g4 ) -.
+            \stemDown\override NoteHead.color = #(x11-color "black")  c4 ( \stemDown e8 [ \stemDown c8 ] \stemUp g4 )  \override NoteHead.color = #(x11-color "LightSteelBlue") -.
             \stemUp g4 -. | % 2
             \stemDown c4 ( \stemDown e8 [ \stemDown c8 ] \stemUp g4 ) -.
             \stemDown g'4 -. | % 3
-            \stemDown\override NoteHead.color = #(x11-color "black")  f8 ( [ \stemDown e8 \stemDown d8 \stemDown c8 ]
+            \stemDown f8 ( [ \stemDown e8 \stemDown d8 \stemDown c8 ]
             \stemDown b8 [ \stemDown c8 \stemDown b8 \stemDown c8 ] | % 4
             \stemDown d8 [ \stemDown c8 \stemDown b8 \stemDown a8 ]
-            \stemUp g4 )  \override NoteHead.color = #(x11-color "LightSteelBlue") r4 \break | % 5
+            \stemUp g4 ) r4 \break | % 5
             \stemDown c4 ( \stemDown e8 [ \stemDown c8 ] \stemUp g4 ) -.
             \stemUp g4 -. | % 6
             \stemDown e'4 ( \stemDown g8 [ \stemDown e8 ] \stemDown c4 )

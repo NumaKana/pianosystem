@@ -2,6 +2,7 @@
 
 import streamlit as st
 import os
+import abjad
 
 n = 0
 
@@ -18,14 +19,8 @@ uploaded_files = st.sidebar.file_uploader("upload .xml file")
 #    st.write("filename:", uploaded_file)
 #-----
 
+file = "sheet/file.ly"
 
-#make_svg.cmdからコマンドを実行する
-cmd_file = "make_svg.cmd"   # .cmdファイルへのパス
-command = cmd_file
-
-#command += " " + "sheet/file.xml" #ここをupload_fileにしたい
-
-os.system(command)
 
 if st.button("left"):
     if n > 0: n -= 1
@@ -38,9 +33,15 @@ num=2
 col=[]
 col= st.columns(num)
 
-for i in list(range(0,num,1)):
-    with col[i]:
-        st.image("sheet/file-page"+str(i+n+1)+".png", use_column_width=True)
+string = "d'8 f' a' d'' f'' gs'4 r8 e' gs' b' e'' gs'' a'4"
+voice = abjad.Voice(string, name="RH_Voice")
+staff = abjad.Staff([voice], name="RH_Staff")
+score = abjad.Score([staff], name="Score")
+abjad.persist.as_png(file, "testfile", remove_ly=True)
+
+#for i in list(range(0,num,1)):
+#    with col[i]:
+#        st.image(abjad.show(file), use_column_width=True)
 
 
 
