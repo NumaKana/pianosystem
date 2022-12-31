@@ -27,7 +27,8 @@ page_next = col_page[1].button("＞")
 def init():
     os.system("chmod -R a+x 'cmd'")
     os.system("export PATH=$PATH:/cmd")
-    os.system("export PATH=$PATH:/Lilypond")
+    os.system("export PATH=$PATH:/Lilypond/usr/bin")
+
     if uploaded_files:
         makesvg(file)
         addcolor()
