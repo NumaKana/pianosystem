@@ -47,7 +47,7 @@ def makesvg(file): #できない！！
     command = cmd_musicxml2ly  + " " + file
     #command += " " + "sheet/file.xml" #ここをupload_fileにしたい
     os.system(command)
-    pro = subprocess.Popen("LilyPond/usr/bin/lilypond.exe sheet/file.ly", shell=True)
+    pro = subprocess.Popen("LilyPond/usr/bin/llilypond sheet/file.ly", shell=True)
     
 def addcolor(m):
     file_name = "sheet/file.ly"
@@ -94,7 +94,7 @@ def addcolor(m):
     with open("sheet/alt_file.ly", mode='w', encoding="utf-8") as f:
         f.writelines(data)
 
-    pro = subprocess.Popen("LilyPond/usr/bin/lilypond.exe sheet/alt_file.ly", shell=True)
+    pro = subprocess.Popen("LilyPond/usr/bin/llilypond sheet/alt_file.ly", shell=True)
 
 def getphrase(m):
     file_name = "sheet/file.ly"
@@ -135,7 +135,7 @@ def getphrase(m):
     with open("sheet/phrase_file.ly", mode='w', encoding="utf-8") as f:
         f.writelines(data)
 
-    pro = subprocess.Popen("LilyPond/usr/bin/lilypond.exe sheet/phrase_file.ly", shell=True)
+    pro = subprocess.Popen("LilyPond/usr/bin/llilypond sheet/phrase_file.ly", shell=True)
 
 
 def show(filename, n):
