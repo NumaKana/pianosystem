@@ -2,7 +2,7 @@
 
 import streamlit as st
 import os
-import abjad
+import subprocess
 
 n = 0
 
@@ -33,11 +33,8 @@ num=2
 col=[]
 col= st.columns(num)
 
-string = "d'8 f' a' d'' f'' gs'4 r8 e' gs' b' e'' gs'' a'4"
-voice = abjad.Voice(string, name="RH_Voice")
-staff = abjad.Staff([voice], name="RH_Staff")
-score = abjad.Score([staff], name="Score")
-abjad.persist.as_png(file, "testfile", remove_ly=True)
+pro = subprocess.Popen("LilyPond\\usr\\bin\\lilypond.exe -h")
+pro.poll() == None
 
 #for i in list(range(0,num,1)):
 #    with col[i]:

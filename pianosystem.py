@@ -1,6 +1,7 @@
 import streamlit as st
 import os
 import re
+import subprocess
 
 st.set_page_config(
     page_title="ピアノ練習システム",
@@ -46,7 +47,7 @@ def makesvg(file): #できない！！
     command = cmd_musicxml2ly  + " " + file
     #command += " " + "sheet/file.xml" #ここをupload_fileにしたい
     os.system(command)
-    os.system("'cmd/lilypond.sh' sheet/file.ly")
+    pro = subprocess.Popen("LilyPond\\usr\\bin\\lilypond.exe sheet/file.ly")
     
 def addcolor(m):
     file_name = "sheet/file.ly"
@@ -93,7 +94,7 @@ def addcolor(m):
     with open("sheet/alt_file.ly", mode='w', encoding="utf-8") as f:
         f.writelines(data)
 
-    os.system("'cmd/lilypond.sh' sheet/alt_file.ly")
+    pro = subprocess.Popen("LilyPond\\usr\\bin\\lilypond.exe sheet/alt_file.ly")
 
 def getphrase(m):
     file_name = "sheet/file.ly"
@@ -134,7 +135,7 @@ def getphrase(m):
     with open("sheet/phrase_file.ly", mode='w', encoding="utf-8") as f:
         f.writelines(data)
 
-    os.system("'cmd/lilypond.sh' sheet/phrase_file.ly")
+    pro = subprocess.Popen("LilyPond\\usr\\bin\\lilypond.exe sheet/phrase_file.ly")
 
 
 def show(filename, n):
