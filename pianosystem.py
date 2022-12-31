@@ -47,7 +47,7 @@ def makesvg(file): #できない！！
     command = cmd_musicxml2ly  + " " + file
     #command += " " + "sheet/file.xml" #ここをupload_fileにしたい
     os.system(command)
-    pro = subprocess.Popen("LilyPond/usr/bin/lilypond-book.py test.html", shell=True)
+    pro = subprocess.Popen("LilyPond/usr/bin/lilypond-book.py --output==test test.html", shell=True)
     
 def addcolor(m):
     file_name = "sheet/file.ly"
