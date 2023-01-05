@@ -12,7 +12,7 @@ startTimer('init');
 
 import exec_ from 'child_process'
 
-//process.env.LAMBDA_TASK_ROOT = "/mnt/c/Users/kr814/workspace_ubuntu/test/deploy-2.23.6-1";
+process.env.LAMBDA_TASK_ROOT = "/mnt/c/Users/kr814/workspace/pianosystem-1/deploy-2.23.6-1";
 
 import a from 'fs'
 const fs = promisifyAll(a);
@@ -25,7 +25,7 @@ const mime = {
   png: 'image/png'
 };
 
-process.chdir('/tmp');
+process.chdir('./file');
 process.env.PATH += `:${LY_DIR}/usr/bin`;
 process.env.LD_LIBRARY_PATH = `${LY_DIR}/usr/lib`;
 
@@ -59,7 +59,7 @@ exec_.exec('ls', (err, stdout, stderr) => {
 )
 
 function runLilypond() {
-  return exec(`./ly/usr/bin/lilypond`, `--formats=pdf --include="${__dirname}/fonts/font-stylesheets" -o rendered input.ly >&2`.split(" "));
+  return exec(`${LY_DIR}/usr/bin/lilypond --formats=pdf --include="${__dirname}/fonts/font-stylesheets" -o rendered input.ly >&2`);
 }
 
 async function uploadFile(id, file, mode) {
