@@ -1,7 +1,6 @@
 import streamlit as st
 import os
 import re
-import abjad
 import subprocess
 
 st.set_page_config(
@@ -152,6 +151,7 @@ def main():
         st.session_state.m = 0
         st.session_state.l = 0
         st.session_state.filename = ""
+        subprocess.check_call("node test/local.js 2.23.6-1", shell=True)
         makesvg("sheet/file.mxl")
         addcolor(st.session_state.m)
         getphrase(st.session_state.m)
