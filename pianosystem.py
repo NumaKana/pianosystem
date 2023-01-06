@@ -87,7 +87,7 @@ def addcolor(m):
     st.session_state.m -= back
 
     #元のファイルに書き込み
-    with open("4measure/file.ly", mode='w', encoding="utf-8") as f:
+    with open("4measure/file.ly", mode='w+', encoding="utf-8") as f:
         f.writelines(data)
 
     makefile.make_png("4measure")
@@ -128,7 +128,7 @@ def getphrase(m):
     data[end[m]] = data[end[m]][:idx_end] + ' \override NoteHead.color = #(x11-color "LightSteelBlue") ' + data[end[m]][idx_end:]
     data[start[m]] = data[start[m]][:idx_start] + '\override NoteHead.color = #(x11-color "black") ' + data[start[m]][idx_start:]
 
-    with open("phrase/file.ly", mode='w', encoding="utf-8") as f:
+    with open("phrase/file.ly", mode='w+', encoding="utf-8") as f:
         f.writelines(data)
 
     makefile.make_png("phrase")
