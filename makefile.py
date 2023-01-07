@@ -5,13 +5,10 @@ import subprocess
 AWS_REGION ="ap-northeast-1"
 bucket_name = "lilycompile-save-tmp"
 url_api = "https://e48ajtso28.execute-api.ap-northeast-1.amazonaws.com/dev"
-url_s3 = "s3://arn:aws:s3:ap-northeast-1:880991079725:accesspoint/accesspoint"
 service_name = 's3'
-access_key = 'AKIA42HZJBUWZWKL4KE4'
-secret_key = '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'
 
 def mxl_ly():
-    subprocess.run("python musicxml2ly/musicxml2ly.py --output=file/file sheet/file.mxl", shell=True)
+    subprocess.run("python musicxml2ly/musicxml2ly.py --output=file/file file/file.mxl", shell=True)
 
 def make_png(dir):
     data = open(dir+"/file.ly", 'r', encoding="utf-8")
@@ -26,7 +23,7 @@ def make_png(dir):
 
 
 def get_from_s3(dir):
-    s3_resource = boto3.resource(service_name, aws_access_key_id=access_key, aws_secret_access_key=secret_key)
+    s3_resource = boto3.resource(service_name)
 
     bucket = s3_resource.Bucket(bucket_name)
     print("object download ...")
