@@ -4,11 +4,11 @@ import subprocess
 import streamlit as st
 
 AWS_REGION ="ap-northeast-1"
-bucket_name = st.secrets.bucket_name
+bucket_name = st.secrets.AWS_KEYS.bucket_name
 url_api = "https://e48ajtso28.execute-api.ap-northeast-1.amazonaws.com/dev"
 service_name = 's3'
-access_key = st.secrets.AWS_ACCESS_KEY_ID
-secret_key = st.secrets.AWS_SECRET_ACCESS_KEY
+access_key = st.secrets.AWS_KEYS.AWS_ACCESS_KEY_ID
+secret_key = st.secrets.AWS_KEYS.AWS_SECRET_ACCESS_KEY
 
 def mxl_ly():
     subprocess.run("python musicxml2ly/musicxml2ly.py --output=file/file file/file.mxl", shell=True)
