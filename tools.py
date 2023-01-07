@@ -1,7 +1,6 @@
 import streamlit as st
 import os
 import re
- 
 
 def count_file(dir):
     count_file = 0   
@@ -25,9 +24,10 @@ def init(dir):
     if 'l' not in st.session_state:
         st.session_state.l = 0
     if 'filename' not in st.session_state:
-        st.session_state.filename = dir
+        st.session_state.filename = ""
 
 def show(dir, col, n):
+    print(dir)
     for i in list(range(0,2,1)):
         with col[i]:
-            st.image("./"+dir+"/file-page"+str(i+n+1)+".png", use_column_width=True)
+            st.image(dir+"/file-page"+str(i+n+1)+".png", use_column_width=True)

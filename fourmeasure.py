@@ -14,14 +14,6 @@ def addcolor(m):
     back = 0
     repeat = []
     while(i < len(data)):
-        if "\clef" in data[i]:
-            data.insert(i+1, '\override NoteHead.color = #(x11-color "LightSteelBlue")\n')
-            data.insert(i+1, '\override Stem.color = #(x11-color "LightSteelBlue")\n')
-            data.insert(i+1, '\override Beam.color = #(x11-color "LightSteelBlue")\n')
-            data.insert(i+1, '\override Accidental.color = #(x11-color "LightSteelBlue")\n')
-        if "\\repeat volta" in data[i]:
-            repeat.append(i)     
-
         if re.match(".*(%\s|#)"+str(int(m)+1)+"\\n", data[i]):
             data.insert(i+1, '\override NoteHead.color = #(x11-color "black")\n')
             data.insert(i+1, '\override Stem.color = #black\n')
@@ -40,6 +32,13 @@ def addcolor(m):
             data.insert(i+1, '\override Stem.color = #(x11-color "LightSteelBlue")\n')
             data.insert(i+1, '\override Beam.color = #(x11-color "LightSteelBlue")\n')
             data.insert(i+1, '\override Accidental.color = #(x11-color "LightSteelBlue")\n')
+        if "\clef" in data[i]:
+            data.insert(i+1, '\override NoteHead.color = #(x11-color "LightSteelBlue")\n')
+            data.insert(i+1, '\override Stem.color = #(x11-color "LightSteelBlue")\n')
+            data.insert(i+1, '\override Beam.color = #(x11-color "LightSteelBlue")\n')
+            data.insert(i+1, '\override Accidental.color = #(x11-color "LightSteelBlue")\n')
+        if "\\repeat volta" in data[i]:
+            repeat.append(i)     
         i+=1
 
     st.session_state.m -= back

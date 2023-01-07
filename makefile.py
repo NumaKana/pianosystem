@@ -35,5 +35,9 @@ def get_from_s3(dir):
         s3_object.download_file(dir+"/"+obj.key)
     print("done!")
 
+def makesvg(dir):
+    mxl_ly()
+    make_png(dir)
+
 
 #print("s3バケットからのファイルアップロードが完了しました")

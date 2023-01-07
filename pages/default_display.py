@@ -1,5 +1,4 @@
 import streamlit as st
-import re
 
 import makefile
 import tools
@@ -21,10 +20,6 @@ page_back = col_page[0].button("＜")
 page_next = col_page[1].button("＞")
     
 
-def makesvg(dir):
-    makefile.mxl_ly()
-    makefile.make_png(dir)
-
 def main():
     tools.init("file")
     tools.show(st.session_state.filename, col_img, st.session_state.n)
@@ -33,7 +28,7 @@ def main():
         st.session_state.m = 0
         st.session_state.l = 0
         st.session_state.filename = "file"
-        makesvg("file")
+        makefile.makesvg("file")
 
     if page_next: 
         if st.session_state.n < 0: st.session_state.n += 1

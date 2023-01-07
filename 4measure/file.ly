@@ -126,10 +126,6 @@ PartPOneVoiceFive =  \relative c {
 \override Beam.color = #black
 \override Stem.color = #black
 \override NoteHead.color = #(x11-color "black")
-\override Accidental.color = #(x11-color "LightSteelBlue")
-\override Beam.color = #(x11-color "LightSteelBlue")
-\override Stem.color = #(x11-color "LightSteelBlue")
-\override NoteHead.color = #(x11-color "LightSteelBlue")
             \stemUp c4 r4 r2 | % 2
             \stemUp c4 r4 r2 | % 3
             \stemUp c4 r4 \stemUp c4 r4 | % 4
