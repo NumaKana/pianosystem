@@ -11,3 +11,4 @@ phrase/file-page2.png
 phrase/file.ly
 phrase/file.midi
 __pycache__
+.streamlit/secrets.toml

@@ -1,11 +1,14 @@
 import boto3
 import requests
 import subprocess
+import streamlit as st
 
 AWS_REGION ="ap-northeast-1"
-bucket_name = "lilycompile-save-tmp"
+bucket_name = st.secrets.bucket_name
 url_api = "https://e48ajtso28.execute-api.ap-northeast-1.amazonaws.com/dev"
 service_name = 's3'
+access_key = st.secrets.AWS_ACCESS_KEY_ID
+secret_key = st.secrets.AWS_SECRET_ACCESS_KEY
 
 def mxl_ly():
     subprocess.run("python musicxml2ly/musicxml2ly.py --output=file/file file/file.mxl", shell=True)
@@ -23,7 +26,7 @@ def make_png(dir):
 
 
 def get_from_s3(dir):
-    s3_resource = boto3.resource(service_name)
+    s3_resource = boto3.resource(service_name, aws_access_key_id=access_key, aws_secret_access_key=secret_key)
 
     bucket = s3_resource.Bucket(bucket_name)
     print("object download ...")
