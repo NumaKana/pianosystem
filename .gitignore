@@ -1,14 +1,2 @@
-4measure/file-page1.png
-4measure/file-page2.png
-4measure/file.ly
-4measure/file.midi
-file/file-page1.png
-file/file-page2.png
-file/file.ly
-file/file.midi
-phrase/file-page1.png
-phrase/file-page2.png
-phrase/file.ly
-phrase/file.midi
 __pycache__
 .streamlit/secrets.toml
