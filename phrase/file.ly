@@ -40,8 +40,6 @@ PartPOneVoiceOne =  \relative c'' {
         \repeat volta 2 {
             \clef "treble" \numericTimeSignature\time 4/4 \key c \major
             | % 1
-            \stemDown c4 ( \stemDown e8 [ \stemDown c8 ] \stemUp g4 ) -.
-            \stemUp g4 -. | % 2
             \stemDown 
 \override NoteHead.color = #(x11-color "Black")
 \override Stem.color = #(x11-color "Black")
@@ -59,6 +57,8 @@ PartPOneVoiceOne =  \relative c'' {
 \override Staff.Rest.color = #(x11-color "LightSteelBlue")
 \override Staff.LedgerLineSpanner.color = #(x11-color "LightSteelBlue")
  -.
+            \stemUp g4 -. | % 2
+            \stemDown c4 ( \stemDown e8 [ \stemDown c8 ] \stemUp g4 ) -.
             \stemDown g'4 -. | % 3
             \stemDown f8 ( [ \stemDown e8 \stemDown d8 \stemDown c8 ]
             \stemDown b8 [ \stemDown c8 \stemDown b8 \stemDown c8 ] | % 4

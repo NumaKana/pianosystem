@@ -2,3 +2,4 @@ streamlit
 click
 boto3
 requests
+music21
