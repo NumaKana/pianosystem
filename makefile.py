@@ -10,9 +10,7 @@ service_name = 's3'
 access_key = st.secrets.AWS_KEYS.AWS_ACCESS_KEY_ID
 secret_key = st.secrets.AWS_KEYS.AWS_SECRET_ACCESS_KEY
 
-file = "sheet/file.mxl"
-
-def mxl_ly():
+def mxl_ly(file):
     subprocess.run("python musicxml2ly/musicxml2ly.py --output=file/file " + file, shell=True)
 
 def make_png(dir):
@@ -38,7 +36,6 @@ def get_from_s3(dir):
     print("done!")
 
 def makesvg(dir):
-    mxl_ly()
     make_png(dir)
 
 

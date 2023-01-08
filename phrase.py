@@ -1,7 +1,26 @@
 import re
-import streamlit as st
 
 import makefile
+
+change_LightSteelBlue = """
+\override NoteHead.color = #(x11-color "LightSteelBlue")
+\override Stem.color = #(x11-color "LightSteelBlue")
+\override Beam.color = #(x11-color "LightSteelBlue")
+\override Accidental.color = #(x11-color "LightSteelBlue")
+\override Slur.color = #(x11-color "LightSteelBlue")
+\override Staff.Rest.color = #(x11-color "LightSteelBlue")
+\override Staff.LedgerLineSpanner.color = #(x11-color "LightSteelBlue")
+"""
+
+change_Black = """
+\override NoteHead.color = #(x11-color "Black")
+\override Stem.color = #(x11-color "Black")
+\override Beam.color = #(x11-color "Black")
+\override Accidental.color = #(x11-color "Black")
+\override Slur.color = #(x11-color "Black")
+\override Staff.Rest.color = #(x11-color "Black")
+\override Staff.LedgerLineSpanner.color = #(x11-color "Black")
+"""
 
 def getphrase(m):
     file_name = "file/file.ly"
@@ -15,12 +34,9 @@ def getphrase(m):
     end = []
     while(i < len(data)):      
         if "\clef" in data[i]:
-            data.insert(i+1, '\override NoteHead.color = #(x11-color "LightSteelBlue")\n')
-            data.insert(i+1, '\override Stem.color = #(x11-color "LightSteelBlue")\n')
-            data.insert(i+1, '\override Beam.color = #(x11-color "LightSteelBlue")\n')
-            data.insert(i+1, '\override Accidental.color = #(x11-color "LightSteelBlue")\n')   
+            data.insert(i+1, change_LightSteelBlue)  
         if re.match("PartPOneVoiceOne.*", data[i]):
-            data.insert(i+1, '\override NoteHead.color = #(x11-color "LightSteelBlue")\n')
+            data.insert(i+1, change_LightSteelBlue)
             count = 1
             i += 2
             while(count > 0):
@@ -36,8 +52,8 @@ def getphrase(m):
     if len(list(data[end[m]])) > idx_end:
         if list(data[end[m]])[idx_end] == "]": idx_end += 2
 
-    data[end[m]] = data[end[m]][:idx_end] + ' \override NoteHead.color = #(x11-color "LightSteelBlue") ' + data[end[m]][idx_end:]
-    data[start[m]] = data[start[m]][:idx_start] + '\override NoteHead.color = #(x11-color "black") ' + data[start[m]][idx_start:]
+    data[end[m]] = data[end[m]][:idx_end] + ' ' + change_LightSteelBlue + ' ' + data[end[m]][idx_end:]
+    data[start[m]] = data[start[m]][:idx_start] + ' ' + change_Black + ' ' + data[start[m]][idx_start:]
 
     with open("phrase/file.ly", mode='w+', encoding="utf-8") as f:
         f.writelines(data)

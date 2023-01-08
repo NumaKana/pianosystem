@@ -2,7 +2,6 @@ import streamlit as st
 
 import tools
 import phrase 
-import makefile
 
 st.set_page_config(
     page_title="ピアノ練習システム",
@@ -11,35 +10,38 @@ st.set_page_config(
 )
 
 num=2
-col_img= st.columns(num)
-
-
-col_page = st.sidebar.columns(2)
-page_back = col_page[0].button("＜")
-page_next = col_page[1].button("＞")  
-
-col_color = st.sidebar.columns(2)
-color_back = col_color[0].button("back")
-color_next = col_color[1].button("next")
-
 def main():
-    tools.init("phrase")
-    tools.show("phrase", col_img, st.session_state.n)
-    if st.button("reset"):
-        st.session_state.n = 0
-        st.session_state.m = 0
-        st.session_state.l = 0
-        st.session_state.filename = "phrase"
-        makefile.makesvg("phrase")
-        phrase.getphrase(st.session_state.m)
+    col1, col2 = st.columns(num)
+    col_img = [col1, col2]
 
+    col_page = st.sidebar.columns(2)
+    page_back = col_page[0].button("＜")
+    page_next = col_page[1].button("＞")  
+
+    col_color = st.sidebar.columns(2)
+    color_back = col_color[0].button("back")
+    color_next = col_color[1].button("next")
+
+    reset = st.button("reset")
+
+
+    tools.init("phrase")
+
+    if reset:
+        tools.reset("phrase")
+        phrase.getphrase(st.session_state.l)
+    
+    if not color_next and not color_back and not page_next and not page_back:
+        tools.show("phrase", col_img, st.session_state.n)
+        st.stop()
+        
     if color_next:
-        st.session_state.m +=4
-        phrase.getphrase(st.session_state.m)
+        st.session_state.l +=1
+        phrase.getphrase(st.session_state.l)
         tools.show("phrase", col_img, st.session_state.n)
     if color_back:
-        if st.session_state.m > 3: st.session_state.m -=4
-        phrase.getphrase(st.session_state.m)
+        if st.session_state.l > 0: st.session_state.l -=1
+        phrase.getphrase(st.session_state.l)
         tools.show("phrase", col_img, st.session_state.n)
 
     if page_next: 

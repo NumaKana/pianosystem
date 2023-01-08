@@ -11,33 +11,39 @@ st.set_page_config(
 )
 
 num=2
-col_img= st.columns(num)
 
-col_page = st.sidebar.columns(2)
-page_back = col_page[0].button("＜")
-page_next = col_page[1].button("＞")  
-
-col_color = st.sidebar.columns(2)
-color_back = col_color[0].button("back")
-color_next = col_color[1].button("next")
 
 def main():
+    col1, col2 = st.columns(num)
+    col_img = [col1, col2]
+
+    col_page = st.sidebar.columns(2)
+    page_back = col_page[0].button("＜")
+    page_next = col_page[1].button("＞")  
+
+    col_color = st.sidebar.columns(2)
+    color_back = col_color[0].button("back")
+    color_next = col_color[1].button("next")
+
+    reset = st.button("reset")
+
+
     tools.init("4measure")
-    tools.show("4measure", col_img, st.session_state.n)
-    if st.button("reset"):
-        st.session_state.n = 0
-        st.session_state.m = 0
-        st.session_state.l = 0
-        st.session_state.filename = "4measure"
-        makefile.makesvg("4measure")
+
+    if reset:
+        tools.reset("4measure")
         fourmeasure.addcolor(st.session_state.m)
+    
+    if not color_next and not color_back and not page_next and not page_back:
+        tools.show("4measure", col_img, st.session_state.n)
+        st.stop()
         
     if color_next:
-        st.session_state.m +=4
+        st.session_state.m +=1
         fourmeasure.addcolor(st.session_state.m)
         tools.show("4measure", col_img, st.session_state.n)
     if color_back:
-        if st.session_state.m > 3: st.session_state.m -=4
+        if st.session_state.m > 0: st.session_state.m -=1
         fourmeasure.addcolor(st.session_state.m)
         tools.show("4measure", col_img, st.session_state.n)
 
