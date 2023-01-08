@@ -24,10 +24,9 @@ def init(dir):
     if 'l' not in st.session_state:
         st.session_state.l = 0
     if 'filename' not in st.session_state:
-        st.session_state.filename = ""
+        st.session_state.filename = dir
 
 def show(dir, col, n):
-    print(dir)
     for i in list(range(0,2,1)):
         with col[i]:
             st.image(dir+"/file-page"+str(i+n+1)+".png", use_column_width=True)

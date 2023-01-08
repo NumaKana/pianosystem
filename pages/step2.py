@@ -12,9 +12,6 @@ st.set_page_config(
 
 num=2
 col_img= st.columns(num)
-file = "sheet/file.mxl"
-
-uploaded_files = st.sidebar.file_uploader("upload .mxl file")
 
 
 col_page = st.sidebar.columns(2)
