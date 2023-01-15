@@ -8,30 +8,33 @@ st.set_page_config(
     layout="wide",
     initial_sidebar_state="expanded"
 )
-
-num=2
-col_img= st.columns(num)
-
-col_page = st.sidebar.columns(2)
-page_back = col_page[0].button("＜")
-page_next = col_page[1].button("＞")
     
 
 def main():
+    num=2
+    col_img= st.columns(num)
+
+    col_page = st.sidebar.columns(2)
+    page_back = col_page[0].button("＜")
+    page_next = col_page[1].button("＞")
+
+    pages = tools.count_file("file")
+
     tools.init("file")
-    tools.show("file", col_img, st.session_state.n)
     if st.button("reset"):
-        st.session_state.n = 0
-        st.session_state.m = 0
-        st.session_state.l = 0
-        st.session_state.filename = "file"
-        makefile.makesvg("file")
+        tools.reset("file")
+        makefile.make_png("file")
+        pages = tools.count_file("file")
+    
+    if not page_next and not page_back:
+        tools.show("file", col_img, st.session_state.n)
+        st.stop()
 
     if page_next: 
-        if st.session_state.n < 0: st.session_state.n += 1
+        if st.session_state.n < pages: st.session_state.n += 2
         tools.show("file", col_img, st.session_state.n)
     if page_back:
-        if st.session_state.n > 0: st.session_state.n -= 1
+        if st.session_state.n > 0: st.session_state.n -= 2
         tools.show("file", col_img, st.session_state.n)
         
     

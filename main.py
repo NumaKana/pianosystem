@@ -1,9 +1,7 @@
 import streamlit as st
-import xml.etree.ElementTree as ET
 
 import makefile
 import tools
-import music21
 
 st.set_page_config(
     page_title="ピアノ練習システム",
@@ -14,7 +12,7 @@ st.set_page_config(
 
 def main():
     st.header("ピアノ練習システム")
-    uploaded_file = st.file_uploader("練習したい曲のファイルをアップロードしてください ＊まだ未完成＊")
+    uploaded_file = st.file_uploader("練習したい曲のファイルをアップロードしてください")
     st.write("default: 'sonatine m.clementi op.36 no.1'")
 
     st.subheader("Usage:")
@@ -26,12 +24,12 @@ def main():
     if uploaded_file:
         with open("sheet/file.mxl", mode="wb") as f:
             f.write(uploaded_file.getvalue())
-        makefile.mxl_ly("sheet/file.mxl")
-        makefile.makesvg("file")
-
+        file = "sheet/file.mxl"
     else:
         file = "sheet/test_file.mxl"
-        makefile.mxl_ly(file)
+
+    makefile.mxl_ly(file)
+    makefile.make_png("file")
 
 
 

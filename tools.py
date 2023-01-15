@@ -33,7 +33,6 @@ def reset(dir):
     st.session_state.m = 0
     st.session_state.l = 0
     st.session_state.filename = dir
-    makefile.makesvg(dir)
 
 
 def show(dir, col, n):

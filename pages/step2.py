@@ -24,12 +24,15 @@ def main():
 
     reset = st.button("reset")
 
+    pages = tools.count_file("file")
 
     tools.init("phrase")
+    phrase.getphrase(st.session_state.l)
 
     if reset:
         tools.reset("phrase")
         phrase.getphrase(st.session_state.l)
+        pages = tools.count_file("file")
     
     if not color_next and not color_back and not page_next and not page_back:
         tools.show("phrase", col_img, st.session_state.n)
@@ -45,10 +48,10 @@ def main():
         tools.show("phrase", col_img, st.session_state.n)
 
     if page_next: 
-        if st.session_state.n < 0: st.session_state.n += 1
+        if st.session_state.n < pages: st.session_state.n += 2
         tools.show("phrase", col_img, st.session_state.n)
     if page_back:
-        if st.session_state.n > 0: st.session_state.n -= 1
+        if st.session_state.n > 0: st.session_state.n -= 2
         tools.show("phrase", col_img, st.session_state.n)
         
     
