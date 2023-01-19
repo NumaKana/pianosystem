@@ -32,10 +32,12 @@ def getphrase(m):
     i = 0
     start = []
     end = []
-    while(i < len(data)):      
+    while(i < len(data)): 
+        if "\score {" in data[i]:
+            break     
         if "\clef" in data[i]:
             data.insert(i+1, change_LightSteelBlue)  
-        if re.match("PartPOneVoiceOne.*", data[i]):
+        if re.match("Part.*", data[i]):
             data.insert(i+1, change_LightSteelBlue)
             count = 1
             i += 2

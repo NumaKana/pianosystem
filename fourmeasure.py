@@ -37,11 +37,12 @@ def get_fourmeasure():
     end = []
 
     while(i < len(data)):
+        if "\score {" in data[i]:
+            break
         if "\\repeat volta" in data[i]: repeat.append(i) 
         if re.match(".*(%\s|#)"+str(j)+"\\n", data[i]):
             start.append(j)
             count = 0
-            back = 0
             while(count < 4):
                 if re.match(".*(%\s|#)\d+\\n", data[i]): count+=1
                 if "\\repeat volta" in data[i]: repeat.append(i) 
@@ -54,7 +55,6 @@ def get_fourmeasure():
             j += count
             i-=1
         i+=1
-    
     return start, end
 
 
