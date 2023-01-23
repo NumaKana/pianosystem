@@ -30,7 +30,6 @@ def main():
     pages = tools.count_file("file")
 
     tools.init("4measure")
-    fourmeasure.addcolor(st.session_state.m)
 
     if reset:
         tools.reset("4measure")

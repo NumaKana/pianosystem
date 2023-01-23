@@ -2,6 +2,8 @@ import streamlit as st
 
 import makefile
 import tools
+import fourmeasure
+import phrase
 
 st.set_page_config(
     page_title="ピアノ練習システム",
@@ -30,6 +32,8 @@ def main():
 
     makefile.mxl_ly(file)
     makefile.make_png("file")
+    fourmeasure.addcolor(st.session_state.m)
+    phrase.getphrase(st.session_state.l)
 
 
 

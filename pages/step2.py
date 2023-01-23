@@ -27,7 +27,6 @@ def main():
     pages = tools.count_file("file")
 
     tools.init("phrase")
-    phrase.getphrase(st.session_state.l)
 
     if reset:
         tools.reset("phrase")
