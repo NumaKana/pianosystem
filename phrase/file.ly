@@ -131,9 +131,6 @@ PartPOneVoiceOne =  \relative c'' {
     }
 
 PartPOneVoiceFive =  \relative c {
-    \repeat volta 2 {
-        \repeat volta 2 {
-            \clef "bass" \numericTimeSignature\time 4/4 \key c \major | % 1
 
 \override NoteHead.color = #(x11-color "LightSteelBlue")
 \override Stem.color = #(x11-color "LightSteelBlue")
@@ -142,6 +139,9 @@ PartPOneVoiceFive =  \relative c {
 \override Slur.color = #(x11-color "LightSteelBlue")
 \override Staff.Rest.color = #(x11-color "LightSteelBlue")
 \override Staff.LedgerLineSpanner.color = #(x11-color "LightSteelBlue")
+    \repeat volta 2 {
+        \repeat volta 2 {
+            \clef "bass" \numericTimeSignature\time 4/4 \key c \major | % 1
             \stemUp c4 r4 r2 | % 2
             \stemUp c4 r4 r2 | % 3
             \stemUp c4 r4 \stemUp c4 r4 | % 4

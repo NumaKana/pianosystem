@@ -22,23 +22,21 @@ def main():
     st.write("step1: 楽譜が4小節ごとに表示されます．楽曲を通す練習に便利です．")
     st.write("step2: 楽譜をフレーズごとに表示します．難しい箇所を練習するのに便利です，")
 
-    tools.init("")
+    tools.init("file")
     if uploaded_file:
-        with open("sheet/file.mxl", mode="wb") as f:
+        with open("sheet/"+st.session_state.date+".mxl", mode="wb") as f:
             f.write(uploaded_file.getvalue())
-        file = "sheet/file.mxl"
+        file = "sheet/"+st.session_state.date+".mxl"
+
+        makefile.mxl_ly(file)
+        makefile.make_png("file")
+        #fourmeasure.addcolor(st.session_state.m)
+        #phrase.getphrase(st.session_state.l)
     else:
         file = "sheet/test_file.mxl"
 
-    makefile.mxl_ly(file)
-    makefile.make_png("file")
-    fourmeasure.addcolor(st.session_state.m)
-    phrase.getphrase(st.session_state.l)
 
 
-
-        
-    
 
 
 if __name__ == "__main__":

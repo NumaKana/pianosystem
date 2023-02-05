@@ -1,6 +1,7 @@
 import streamlit as st
 import os
 import re
+from datetime import datetime
 
 import makefile
 
@@ -26,6 +27,10 @@ def init(dir):
         st.session_state.l = 0
     if 'filename' not in st.session_state:
         st.session_state.filename = dir
+    if 'date' not in st.session_state:
+        now = datetime.now()
+        st.session_state.date = now.strftime("%Y%m%d%H%M%S")
+    st.session_state.filename = dir
 
 
 def reset(dir):

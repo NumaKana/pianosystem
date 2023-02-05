@@ -14,6 +14,7 @@ def mxl_ly(file):
     subprocess.run("python musicxml2ly/musicxml2ly.py --output=file/file " + file, shell=True)
 
 def make_png(dir):
+    #remove_from_s3()
     data = open(dir+"/file.ly", 'r', encoding="utf-8")
     payload = {
         'code': data.read(),
@@ -23,6 +24,14 @@ def make_png(dir):
     r = requests.post(url_api, json=payload)
     print("done!")
     get_from_s3(dir)
+
+def remove_from_s3():
+    s3_resource = boto3.resource(service_name, aws_access_key_id=access_key, aws_secret_access_key=secret_key)
+
+    bucket = s3_resource.Bucket(bucket_name)
+    for obj in bucket.objects.all():
+        s3_object = s3_resource.Object(bucket_name,obj.key)
+        s3_object.delete()
 
 
 def get_from_s3(dir):
