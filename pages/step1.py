@@ -50,7 +50,7 @@ def main():
         tools.show("4measure", col_img, st.session_state.n)
 
     if page_next: 
-        if st.session_state.n < pages: st.session_state.n += 2
+        if st.session_state.n < pages-1: st.session_state.n += 2
         tools.show("4measure", col_img, st.session_state.n)
     if page_back:
         if st.session_state.n > 0: st.session_state.n -= 2
