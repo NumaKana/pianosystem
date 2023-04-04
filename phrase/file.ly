@@ -1,5 +1,5 @@
 \version "2.22.2"
-% automatically converted by musicxml2ly from sheet/file.mxl
+% automatically converted by musicxml2ly from sheet/test_file.mxl
 \pointAndClickOff
 
 \header {
@@ -36,11 +36,7 @@ PartPOneVoiceOne =  \relative c'' {
 \override Slur.color = #(x11-color "LightSteelBlue")
 \override Staff.Rest.color = #(x11-color "LightSteelBlue")
 \override Staff.LedgerLineSpanner.color = #(x11-color "LightSteelBlue")
-    \repeat volta 2 {
-        \repeat volta 2 {
-            \clef "treble" \numericTimeSignature\time 4/4 \key c \major
-            | % 1
-            \stemDown 
+ 
 \override NoteHead.color = #(x11-color "Black")
 \override Stem.color = #(x11-color "Black")
 \override Beam.color = #(x11-color "Black")
@@ -48,7 +44,11 @@ PartPOneVoiceOne =  \relative c'' {
 \override Slur.color = #(x11-color "Black")
 \override Staff.Rest.color = #(x11-color "Black")
 \override Staff.LedgerLineSpanner.color = #(x11-color "Black")
-  c4 ( \stemDown e8 [ \stemDown c8 ] \stemUp g4 )  
+     \repeat volta 2 {
+        \repeat volta 2 {
+            \clef "treble" \numericTimeSignature\time 4/4 \key c \major
+            | % 1
+            \stemDown c4  
 \override NoteHead.color = #(x11-color "LightSteelBlue")
 \override Stem.color = #(x11-color "LightSteelBlue")
 \override Beam.color = #(x11-color "LightSteelBlue")
@@ -56,7 +56,7 @@ PartPOneVoiceOne =  \relative c'' {
 \override Slur.color = #(x11-color "LightSteelBlue")
 \override Staff.Rest.color = #(x11-color "LightSteelBlue")
 \override Staff.LedgerLineSpanner.color = #(x11-color "LightSteelBlue")
- -.
+ ( \stemDown e8 [ \stemDown c8 ] \stemUp g4 ) -.
             \stemUp g4 -. | % 2
             \stemDown c4 ( \stemDown e8 [ \stemDown c8 ] \stemUp g4 ) -.
             \stemDown g'4 -. | % 3

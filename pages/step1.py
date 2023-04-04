@@ -12,7 +12,6 @@ st.set_page_config(
 
 num=2
 
-
 def main():
     col1, col2 = st.columns(num)
     col_img = [col1, col2]

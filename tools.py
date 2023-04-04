@@ -30,6 +30,8 @@ def init(dir):
     if 'date' not in st.session_state:
         now = datetime.now()
         st.session_state.date = now.strftime("%Y%m%d%H%M%S")
+    if 'uploaded_file' not in st.session_state:
+        st.session_state.uploaded_file = False
     st.session_state.filename = dir
 
 
@@ -41,7 +43,11 @@ def reset(dir):
 
 
 def show(dir, col, n):
-    for i in list(range(0,2,1)):
-        image = dir+"/file-page"+str(i+n+1)+".png"
-        with col[i]:
-            st.image(image)
+    pages = count_file(dir)
+    if pages > 1:
+        for i in list(range(0,2,1)):
+            image = dir+"/file-page"+str(i+n+1)+".png"
+            with col[i]:
+                st.image(image)
+    else:
+        st.image(dir+"/file.png")
