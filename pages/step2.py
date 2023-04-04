@@ -34,6 +34,7 @@ def main():
         pages = tools.count_file("file")
     
     if not color_next and not color_back and not page_next and not page_back:
+        phrase.getphrase(st.session_state.l)
         tools.show("phrase", col_img, st.session_state.n)
         st.stop()
         

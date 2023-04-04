@@ -15,7 +15,7 @@ st.set_page_config(
 
 def main():
     st.header("ピアノ練習システム")
-    st.session_state.uploaded_file = st.file_uploader("練習したい曲のファイルをアップロードしてください")
+    uploaded_file = st.file_uploader("練習したい曲のファイルをアップロードしてください")
     st.write("default: 'sonatine m.clementi op.36 no.1'")
 
     st.subheader("Usage:")
@@ -24,18 +24,19 @@ def main():
     st.write("step2: 楽譜をフレーズごとに表示します．難しい箇所を練習するのに便利です，")
 
     tools.init("file")
-    if st.session_state.uploaded_file:
+    if uploaded_file:
+        st.session_state.uploaded_file = True
         with open("sheet/"+st.session_state.date+".mxl", mode="wb") as f:
-            f.write(st.session_state.uploaded_file.getvalue())
-        file = "sheet/"+st.session_state.date+".mxl"
+            f.write(uploaded_file.getvalue())
 
+    if st.session_state.uploaded_file:
+        file = "sheet/"+st.session_state.date+".mxl"
     else:
         file = "sheet/test_file.mxl"
 
     makefile.mxl_ly(file)
-    makefile.make_png("file")
-    fourmeasure.addcolor(st.session_state.m)
-    phrase.getphrase(st.session_state.l)
+    #fourmeasure.addcolor(st.session_state.m)
+    #phrase.getphrase(st.session_state.l)
 
     search_phrase.makearray()
 

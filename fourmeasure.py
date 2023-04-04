@@ -39,13 +39,13 @@ def get_fourmeasure():
     while(i < len(data)):
         if "\score {" in data[i]:
             break
-        if "\\repeat volta" in data[i]: repeat.append(i) 
+        if "\\repeat " in data[i]: repeat.append(i) 
         if re.match(".*(%\s|#)"+str(j)+"\\n", data[i]):
             start.append(j)
             count = 0
             while(count < 4):
                 if re.match(".*(%\s|#)\d+\\n", data[i]): count+=1
-                if "\\repeat volta" in data[i]: repeat.append(i) 
+                if "\\repeat " in data[i]: repeat.append(i) 
                 if data[i].endswith("}\n"):
                     if repeat: 
                         repeat.pop()
@@ -73,8 +73,8 @@ def addcolor(m):
             data.insert(i+1, change_Black)
         if re.match(".*(%\s|#)"+str(end[m])+"\\n", data[i]):
             data.insert(i+1, change_LightSteelBlue)
-        if "\clef" in data[i]:
-            data.insert(i+1, change_LightSteelBlue)  
+        if ".*%\s1" in data[i]:
+            data.insert(i, change_LightSteelBlue)  
         i-=1
 
 
