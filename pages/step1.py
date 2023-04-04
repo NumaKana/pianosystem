@@ -36,6 +36,7 @@ def main():
         pages = tools.count_file("file")
     
     if not color_next and not color_back and not page_next and not page_back:
+        fourmeasure.addcolor(st.session_state.m)
         tools.show("4measure", col_img, st.session_state.n)
         st.stop()
         

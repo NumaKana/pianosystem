@@ -27,6 +27,7 @@ def main():
         pages = tools.count_file("file")
     
     if not page_next and not page_back:
+        makefile.make_png("file")
         tools.show("file", col_img, st.session_state.n)
         st.stop()
 
