@@ -4,7 +4,7 @@ import makefile
 import tools
 import fourmeasure
 import phrase
-import search
+import search_phrase
 
 st.set_page_config(
     page_title="ピアノ練習システム",
@@ -29,14 +29,15 @@ def main():
             f.write(st.session_state.uploaded_file.getvalue())
         file = "sheet/"+st.session_state.date+".mxl"
 
-        makefile.mxl_ly(file)
-        makefile.make_png("file")
-        fourmeasure.addcolor(st.session_state.m)
-        phrase.getphrase(st.session_state.l)
     else:
         file = "sheet/test_file.mxl"
-    
-    search.makearray()
+
+    makefile.mxl_ly(file)
+    makefile.make_png("file")
+    fourmeasure.addcolor(st.session_state.m)
+    phrase.getphrase(st.session_state.l)
+
+    search_phrase.makearray()
 
 
 
