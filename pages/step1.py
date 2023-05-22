@@ -26,17 +26,18 @@ def main():
 
     reset = st.button("reset")
 
-    pages = tools.count_file("file")
+    while tools.count_file("4measure"):
+        fourmeasure.addcolor(st.session_state.m)
+    pages = tools.count_file("4measure")
 
     tools.init("4measure")
 
     if reset:
         tools.reset("4measure")
         fourmeasure.addcolor(st.session_state.m)
-        pages = tools.count_file("file")
+        pages = tools.count_file("4measure")
     
     if not color_next and not color_back and not page_next and not page_back:
-        fourmeasure.addcolor(st.session_state.m)
         tools.show("4measure", col_img, st.session_state.n)
         st.stop()
         

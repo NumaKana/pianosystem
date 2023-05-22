@@ -23,18 +23,19 @@ def main():
     color_next = col_color[1].button("next")
 
     reset = st.button("reset")
-
-    pages = tools.count_file("file")
+    
+    while tools.count_file("phrase"):
+        phrase.getphrase(st.session_state.l)
+    pages = tools.count_file("phrase")
 
     tools.init("phrase")
 
     if reset:
         tools.reset("phrase")
         phrase.getphrase(st.session_state.l)
-        pages = tools.count_file("file")
+        pages = tools.count_file("phrase")
     
     if not color_next and not color_back and not page_next and not page_back:
-        phrase.getphrase(st.session_state.l)
         tools.show("phrase", col_img, st.session_state.n)
         st.stop()
         
