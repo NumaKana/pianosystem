@@ -18,6 +18,7 @@ def main():
     page_back = col_page[0].button("＜")
     page_next = col_page[1].button("＞")
 
+    makefile.make_png("file")
     while tools.count_file("file") == 0:
         makefile.make_png("file")
     pages = tools.count_file("file")

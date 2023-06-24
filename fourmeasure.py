@@ -23,6 +23,22 @@ change_Black = """
 \override Staff.LedgerLineSpanner.color = #(x11-color "Black")
 """
 
+def search_break():
+    file_name = "file/file.ly"
+    array = []
+    i = 0
+
+    with open(file_name, encoding="utf-8") as f:
+        data = f.readlines()
+    while(i < len(data)):
+        if re.match(".*% 1\\n", data[i]):
+           array.append(i)
+        if "\\break" in data[i]:
+            array.append(i)
+        i+=1
+    print(array)
+    return array
+
 def get_fourmeasure():
     file_name = "file/file.ly"
     with open(file_name, encoding="utf-8") as f:
@@ -33,15 +49,14 @@ def get_fourmeasure():
     back = 0
     repeat = []
     count = 0
-    start = []
-    end = []
+    array = []
 
     while(i < len(data)):
         if "\score {" in data[i]:
             break
         if "\\repeat " in data[i]: repeat.append(i) 
         if re.match(".*(%\s|#)"+str(j)+"\\n", data[i]):
-            start.append(j)
+            array.append(j)
             count = 0
             while(count < 4):
                 if re.match(".*(%\s|#)\d+\\n", data[i]): count+=1
@@ -51,11 +66,10 @@ def get_fourmeasure():
                         repeat.pop()
                         break
                 i+=1
-            end.append(j+count)
             j += count
             i-=1
         i+=1
-    return start, end
+    return array
 
 
 
@@ -64,20 +78,32 @@ def addcolor(m):
 
     #ファイルをリストで読み込み
     with open(file_name, encoding="utf-8") as f:
-        data = f.readlines()
+        data_all = f.read()
+    with open(file_name, encoding="utf-8") as l:
+        data = l.readlines()
 
-    i = len(data) - 1
-    start, end = get_fourmeasure()
-    while(i > 0):
-        if re.match(".*(%\s|#)"+str(start[m])+"\\n", data[i]):
-            data.insert(i+1, change_Black)
-        if re.match(".*(%\s|#)"+str(end[m])+"\\n", data[i]):
-            data.insert(i+1, change_LightSteelBlue)
-        if ".*%\s1" in data[i]:
-            data.insert(i, change_LightSteelBlue)  
-        i-=1
-
-
+    if "\\break" in data_all:
+        array = search_break()
+        i = len(data) - 1
+        while(i > 0):
+            if i == array[m]:
+                data.insert(i+1, change_Black)
+            if i == array[m+1]:
+                data.insert(i+1, change_LightSteelBlue)
+            if "% 1\n" in data[i]:
+                data.insert(i+1, change_LightSteelBlue)  
+            i-=1
+    else:
+        array = get_fourmeasure()
+        i = len(data) - 1
+        while(i > 0):
+            if re.match(".*(%\s|#)"+str(array[m])+"\\n", data[i]):
+                data.insert(i+1, change_Black)
+            if re.match(".*(%\s|#)"+str(array[m]-1)+"\\n", data[i]):
+                data.insert(i+1, change_LightSteelBlue)
+            if "% 1\n" in data[i]:
+                data.insert(i+1, change_LightSteelBlue)  
+            i-=1
 
     #元のファイルに書き込み
     with open("4measure/file.ly", mode='w+', encoding="utf-8") as f:

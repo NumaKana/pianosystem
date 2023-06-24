@@ -31,6 +31,7 @@ PartPOneVoiceOne =  \relative c'' {
     \repeat volta 2 {
         \repeat volta 2 {
             \clef "treble" \numericTimeSignature\time 4/4 \key c \major
+            | % 1
 
 \override NoteHead.color = #(x11-color "LightSteelBlue")
 \override Stem.color = #(x11-color "LightSteelBlue")
@@ -39,15 +40,6 @@ PartPOneVoiceOne =  \relative c'' {
 \override Slur.color = #(x11-color "LightSteelBlue")
 \override Staff.Rest.color = #(x11-color "LightSteelBlue")
 \override Staff.LedgerLineSpanner.color = #(x11-color "LightSteelBlue")
-            | % 1
-
-\override NoteHead.color = #(x11-color "Black")
-\override Stem.color = #(x11-color "Black")
-\override Beam.color = #(x11-color "Black")
-\override Accidental.color = #(x11-color "Black")
-\override Slur.color = #(x11-color "Black")
-\override Staff.Rest.color = #(x11-color "Black")   
-\override Staff.LedgerLineSpanner.color = #(x11-color "Black")
             \stemDown c4 ( \stemDown e8 [ \stemDown c8 ] \stemUp g4 ) -.
             \stemUp g4 -. | % 2
             \stemDown c4 ( \stemDown e8 [ \stemDown c8 ] \stemUp g4 ) -.
@@ -56,14 +48,6 @@ PartPOneVoiceOne =  \relative c'' {
             \stemDown b8 [ \stemDown c8 \stemDown b8 \stemDown c8 ] | % 4
             \stemDown d8 [ \stemDown c8 \stemDown b8 \stemDown a8 ]
             \stemUp g4 ) r4 \break | % 5
-
-\override NoteHead.color = #(x11-color "LightSteelBlue")
-\override Stem.color = #(x11-color "LightSteelBlue")
-\override Beam.color = #(x11-color "LightSteelBlue")
-\override Accidental.color = #(x11-color "LightSteelBlue")
-\override Slur.color = #(x11-color "LightSteelBlue")
-\override Staff.Rest.color = #(x11-color "LightSteelBlue")
-\override Staff.LedgerLineSpanner.color = #(x11-color "LightSteelBlue")
             \stemDown c4 ( \stemDown e8 [ \stemDown c8 ] \stemUp g4 ) -.
             \stemUp g4 -. | % 6
             \stemDown e'4 ( \stemDown g8 [ \stemDown e8 ] \stemDown c4 )
@@ -81,12 +65,28 @@ PartPOneVoiceOne =  \relative c'' {
             \stemDown d,8 ( [ \stemDown g8 \stemDown b8 \stemDown d8 ]
             \stemDown c8 [ \stemDown b8 \stemDown a8 \stemDown g8 ]
             \break | % 13
+
+\override NoteHead.color = #(x11-color "Black")
+\override Stem.color = #(x11-color "Black")
+\override Beam.color = #(x11-color "Black")
+\override Accidental.color = #(x11-color "Black")
+\override Slur.color = #(x11-color "Black")
+\override Staff.Rest.color = #(x11-color "Black")   
+\override Staff.LedgerLineSpanner.color = #(x11-color "Black")
             \stemDown fis8 [ \stemDown e8 \stemDown g8 \stemDown fis8 ]
             \stemDown a8 [ \stemDown g8 \stemDown fis8 \stemDown e8 ] | % 14
             \stemDown e8 [ \stemDown d8 \stemDown c8 \stemDown b8 ]
             \stemDown d8 [ \stemDown c8 \stemDown b8 \stemDown a8 ] | % 15
             \stemUp g2 ) r2 }
         \break | % 16
+
+\override NoteHead.color = #(x11-color "LightSteelBlue")
+\override Stem.color = #(x11-color "LightSteelBlue")
+\override Beam.color = #(x11-color "LightSteelBlue")
+\override Accidental.color = #(x11-color "LightSteelBlue")
+\override Slur.color = #(x11-color "LightSteelBlue")
+\override Staff.Rest.color = #(x11-color "LightSteelBlue")
+\override Staff.LedgerLineSpanner.color = #(x11-color "LightSteelBlue")
         \stemDown b4 ( \stemDown d8 [ \stemDown b8 ] \stemUp g4 ) -.
         \stemUp g4 -. | % 17
         \stemDown c4 ( \stemDown es8 [ \stemDown c8 ] \stemUp g4 ) -.
@@ -142,27 +142,11 @@ PartPOneVoiceFive =  \relative c {
 \override Slur.color = #(x11-color "LightSteelBlue")
 \override Staff.Rest.color = #(x11-color "LightSteelBlue")
 \override Staff.LedgerLineSpanner.color = #(x11-color "LightSteelBlue")
-
-\override NoteHead.color = #(x11-color "Black")
-\override Stem.color = #(x11-color "Black")
-\override Beam.color = #(x11-color "Black")
-\override Accidental.color = #(x11-color "Black")
-\override Slur.color = #(x11-color "Black")
-\override Staff.Rest.color = #(x11-color "Black")   
-\override Staff.LedgerLineSpanner.color = #(x11-color "Black")
             \stemUp c4 r4 r2 | % 2
             \stemUp c4 r4 r2 | % 3
             \stemUp c4 r4 \stemUp c4 r4 | % 4
             \stemUp g4 r4 \stemDown g'8 ( [ \stemDown f8 \stemDown e8
             \stemDown d8 ] \break | % 5
-
-\override NoteHead.color = #(x11-color "LightSteelBlue")
-\override Stem.color = #(x11-color "LightSteelBlue")
-\override Beam.color = #(x11-color "LightSteelBlue")
-\override Accidental.color = #(x11-color "LightSteelBlue")
-\override Slur.color = #(x11-color "LightSteelBlue")
-\override Staff.Rest.color = #(x11-color "LightSteelBlue")
-\override Staff.LedgerLineSpanner.color = #(x11-color "LightSteelBlue")
             \stemUp c4 ) r4 r2 | % 6
             \stemDown c'4 r4 r4 \stemDown fis,4 | % 7
             \stemDown g4 \stemUp c,4 \stemDown d4 \stemUp d,4 | % 8
