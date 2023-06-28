@@ -2067,7 +2067,7 @@ def musicxml_lyrics_to_text(lyrics, ignoremelismata):
 # TODO
 
 
-class NegativeSkip:
+class NegativeSkip(Exception):
     def __init__(self, here, dest):
         self.here = here
         self.dest = dest

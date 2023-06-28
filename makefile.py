@@ -8,16 +8,17 @@ import glob
 
 AWS_REGION ="ap-northeast-1"
 bucket_name = st.secrets.AWS_KEYS.bucket_name
-url_api = "https://e48ajtso28.execute-api.ap-northeast-1.amazonaws.com/dev"
+url_api = "https://e48ajtso28.execute-api.ap-northeast-1.amazonaws.com/dev/"
 service_name = 's3'
 access_key = st.secrets.AWS_KEYS.AWS_ACCESS_KEY_ID
 secret_key = st.secrets.AWS_KEYS.AWS_SECRET_ACCESS_KEY
 
 def mxl_ly(file):
-    subprocess.run("python musicxml2ly/musicxml2ly.py --output=file/file " + file, shell=True)
+    subprocess.run("python musicxml2ly/musicxml2ly.py --output=file/file " + file)
 
 def make_png(dir):
     remove(dir)
+#    subprocess.run("lilypond --formats=png -o "+ dir +"/file "+dir+"/file.ly", shell=True)
     data = open(dir+"/file.ly", 'r', encoding="utf-8")
     payload = {
         'code': data.read(),
@@ -25,16 +26,14 @@ def make_png(dir):
     }
     print("api request...")
     r = requests.post(url_api, json=payload)
-    print("done!")
     get_from_s3(dir)
 
 def remove(dir):
     for filename in  glob.glob(dir+'/*.png'):
-        os.remove(filename)
+        os.remove(filename)   
 
 def get_from_s3(dir):
     s3_resource = boto3.resource(service_name, aws_access_key_id=access_key, aws_secret_access_key=secret_key)
-
     bucket = s3_resource.Bucket(bucket_name)
     print("object download ...")
     for obj in bucket.objects.all():

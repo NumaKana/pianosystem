@@ -24,28 +24,42 @@ def main():
 
     reset = st.button("reset")
 
-    pages = tools.count_file("file")
-
     tools.init("phrase")
 
     if reset:
         tools.reset("phrase")
         phrase.getphrase(st.session_state.l)
-        pages = tools.count_file("file")
+        while tools.count_file("phrase") == 0:
+            phrase.getphrase(st.session_state.l)
+        pages = tools.count_file("phrase")
     
     if not color_next and not color_back and not page_next and not page_back:
         phrase.getphrase(st.session_state.l)
+        pages = tools.count_file("phrase")
+        while tools.count_file("phrase") == 0:
+            phrase.getphrase(st.session_state.l)
+        pages = tools.count_file("phrase")
         tools.show("phrase", col_img, st.session_state.n)
         st.stop()
         
     if color_next:
         st.session_state.l +=1
         phrase.getphrase(st.session_state.l)
+        pages = tools.count_file("phrase")
+        while tools.count_file("phrase") == 0:
+            phrase.getphrase(st.session_state.l)
+        pages = tools.count_file("phrase")
         tools.show("phrase", col_img, st.session_state.n)
+
     if color_back:
         if st.session_state.l > 0: st.session_state.l -=1
         phrase.getphrase(st.session_state.l)
+        pages = tools.count_file("phrase")
+        while tools.count_file("phrase") == 0:
+            phrase.getphrase(st.session_state.l)
+        pages = tools.count_file("phrase")
         tools.show("phrase", col_img, st.session_state.n)
+
 
     if page_next: 
         if st.session_state.n < pages-1: st.session_state.n += 2

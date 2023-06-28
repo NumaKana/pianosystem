@@ -12,7 +12,7 @@ def count_file(dir):
         #ファイルもしくはディレクトリのパスを取得
         file_path = os.path.join(dir,file_name)
         #ファイルであるか判定
-        if re.match(".*\.png", file_path):
+        if re.match(".*png", file_path):
             count_file +=1
     print(count_file)
     return count_file
