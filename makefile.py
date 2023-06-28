@@ -18,16 +18,15 @@ def mxl_ly(file):
 
 def make_png(dir):
     remove(dir)
-    subprocess.run("lilypond --formats=png -o "+ dir +"/file "+dir+"/file.ly", shell=True)
-    print("hello")
-#    data = open(dir+"/file.ly", 'r', encoding="utf-8")
-#    payload = {
-#        'code': data.read(),
-#        'id':'file'
-#    }
-#    print("api request...")
-#    r = requests.post(url_api, json=payload)
-#    get_from_s3(dir)
+#    subprocess.run("lilypond --formats=png -o "+ dir +"/file "+dir+"/file.ly", shell=True)
+    data = open(dir+"/file.ly", 'r', encoding="utf-8")
+    payload = {
+        'code': data.read(),
+        'id':'file'
+    }
+    print("api request...")
+    r = requests.post(url_api, json=payload)
+    get_from_s3(dir)
 
 def remove(dir):
     for filename in  glob.glob(dir+'/*.png'):
