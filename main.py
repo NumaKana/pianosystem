@@ -32,7 +32,7 @@ def main():
     if st.session_state.uploaded_file:
         file = "sheet/"+st.session_state.date+".mxl"
     else:
-        file = "sheet/flymetothemoon-kennydrew.mxl"
+        file = "sheet/test_file.mxl"
 
     makefile.mxl_ly(file)
     #fourmeasure.addcolor(st.session_state.m)
