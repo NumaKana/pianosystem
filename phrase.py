@@ -1,6 +1,7 @@
 import re
 
 import makefile
+import search_phrase
 
 change_LightSteelBlue = """
 \override NoteHead.color = #(x11-color "LightSteelBlue")
