@@ -14,7 +14,7 @@ access_key = st.secrets.AWS_KEYS.AWS_ACCESS_KEY_ID
 secret_key = st.secrets.AWS_KEYS.AWS_SECRET_ACCESS_KEY
 
 def mxl_ly(file):
-    subprocess.run("python musicxml2ly/musicxml2ly.py --output=file/file " + file)
+    subprocess.run("python musicxml2ly/musicxml2ly.py --output=file/file " + file, shell=True)
 
 def make_png(dir):
     remove(dir)
